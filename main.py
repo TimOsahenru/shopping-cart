@@ -15,6 +15,9 @@ class Order():
         
     def add_items(self, item):
         self.order_items.append(item)
+        
+    def remove_items(self, item):
+        self.order_items.remove(item)
     
     
 class OrderItem():
