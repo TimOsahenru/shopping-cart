@@ -18,8 +18,16 @@ class Order():
         
     def remove_items(self, item):
         self.order_items.remove(item)
+        
+    def get_total_amount(self):
+        total  = sum([item.get_total() for item in self.order_items])
+        return total
     
     
 class OrderItem():
     def __init__(self, product, quantity):
-        pass
+        self.product = product
+        self.quantity = quantity
+    
+    def get_total(self):
+        return self.product.price * self.quantity

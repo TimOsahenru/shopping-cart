@@ -43,6 +43,23 @@ class TestOrder(unittest.TestCase):
         self.assertIn(order_item_2, order.order_items)
         
         
+    def test_get_total_order(self):
+        
+        customer = Customer("Tim")
+        order = Order(customer)
+        
+        product_1 = Product("Oranges", 20)
+        product_2 = Product("Mangoes", 30)
+        product_3 = Product("Salad", 40)
+        
+        order_item_1 = OrderItem(product_1, 3)
+        order_item_2 = OrderItem(product_2, 6)
+        
+        order.add_items(order_item_1)
+        order.add_items(order_item_2)
+        
+        self.assertEqual(order.get_total_amount(), 240)
+        
         
 if __name__ == "__main__":
     unittest.main()
