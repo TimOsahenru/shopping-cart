@@ -6,6 +6,7 @@ class Product():
     def __init__(self, name, price):
         self.name = name
         self.price = price
+        self.is_digital = False
 
 class Order():
     def __init__(self, customer):
@@ -22,6 +23,20 @@ class Order():
     def get_total_amount(self):
         total  = sum([item.get_total() for item in self.order_items])
         return total
+    
+    def get_quantity(self):
+        total = sum([item.quantity for item in self.order_items])
+        return total
+    
+    
+    def can_be_shipped(self):
+        shipping = False
+        for item in self.order_items:
+            if item.product.is_digital == False:
+                shipping = True
+                
+        return shipping
+                
     
     
 class OrderItem():
